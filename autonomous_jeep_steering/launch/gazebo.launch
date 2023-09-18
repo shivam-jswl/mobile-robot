@@ -1,0 +1,16 @@
+<launch>
+  <include
+    file="$(find gazebo_ros)/launch/empty_world.launch" />
+
+  <param name="robot_description" command="xacro $(find autonomous_jeep_steering)/urdf/autonomous_jeep_steering.urdf"/>
+
+
+ 
+  <node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-urdf -param robot_description -model autonomous_jeep_steering -z 0.3"
+    output="screen" />
+
+</launch>

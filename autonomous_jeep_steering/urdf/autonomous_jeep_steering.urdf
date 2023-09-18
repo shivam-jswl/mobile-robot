@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot
+  name="autonomous_jeep_steering">
+  <link
+    name="body_link">
+    <inertial>
+      <origin
+        xyz="-0.035128 1.4916E-06 0.062158"
+        rpy="0 0 0" />
+      <mass
+        value="11.149" />
+      <inertia
+        ixx="0.11472"
+        ixy="-3.9016E-06"
+        ixz="0.016941"
+        iyy="0.27828"
+        iyz="-9.5421E-07"
+        izz="0.33586" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://autonomous_jeep_steering/meshes/body_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.50196 0.50196 0.50196 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://autonomous_jeep_steering/meshes/body_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="wheel_back_left_link">
+    <inertial>
+      <origin
+        xyz="1.6088E-09 -1.0634E-09 0.0223"
+        rpy="0 0 0" />
+      <mass
+        value="0.33333" />
+      <inertia
+        ixx="0.00050563"
+        ixy="1.2975E-11"
+        ixz="9.5616E-13"
+        iyy="0.00050563"
+        iyz="3.2519E-12"
+        izz="0.00094192" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://autonomous_jeep_steering/meshes/wheel_back_left_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://autonomous_jeep_steering/meshes/wheel_back_left_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_back_left_joint"
+    type="continuous">
+    <origin
+      xyz="-0.160000000000032 0.148199950400563 -0.0599999999999998"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="body_link" />
+    <child
+      link="wheel_back_left_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="wheel_back_right_link">
+    <inertial>
+      <origin
+        xyz="1.6143E-09 7.9905E-10 -0.0223"
+        rpy="0 0 0" />
+      <mass
+        value="0.33333" />
+      <inertia
+        ixx="0.00050563"
+        ixy="1.2914E-11"
+        ixz="9.5334E-13"
+        iyy="0.00050563"
+        iyz="5.3893E-13"
+        izz="0.00094192" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://autonomous_jeep_steering/meshes/wheel_back_right_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://autonomous_jeep_steering/meshes/wheel_back_right_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_back_right_joint"
+    type="continuous">
+    <origin
+      xyz="-0.160000000000032 -0.148199950400563 -0.0599999999999997"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="body_link" />
+    <child
+      link="wheel_back_right_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="steering_rod_link">
+    <inertial>
+      <origin
+        xyz="6.116E-09 6.8138E-13 -0.054842"
+        rpy="0 0 0" />
+      <mass
+        value="0.14775" />
+      <inertia
+        ixx="0.00093641"
+        ixy="1.0343E-12"
+        ixz="-1.4968E-11"
+        iyy="3.6437E-05"
+        iyz="-1.9748E-15"
+        izz="0.00090994" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://autonomous_jeep_steering/meshes/steering_rod_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://autonomous_jeep_steering/meshes/steering_rod_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="steering_rod_joint"
+    type="revolute">
+    <origin
+      xyz="0.165358983848622 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="body_link" />
+    <child
+      link="steering_rod_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wheel_front_left_link">
+    <inertial>
+      <origin
+        xyz="1.9577E-10 -1.352E-10 0.0223"
+        rpy="0 0 0" />
+      <mass
+        value="0.33333" />
+      <inertia
+        ixx="0.00050563"
+        ixy="4.4161E-12"
+        ixz="-5.8256E-12"
+        iyy="0.00050563"
+        iyz="1.8909E-12"
+        izz="0.00094192" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://autonomous_jeep_steering/meshes/wheel_front_left_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://autonomous_jeep_steering/meshes/wheel_front_left_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_front_left_joint"
+    type="continuous">
+    <origin
+      xyz="0 0.148199950400563 -0.06"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="steering_rod_link" />
+    <child
+      link="wheel_front_left_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="wheel_front_right_link">
+    <inertial>
+      <origin
+        xyz="1.9577E-10 -1.352E-10 -0.0223"
+        rpy="0 0 0" />
+      <mass
+        value="0.33333" />
+      <inertia
+        ixx="0.00050563"
+        ixy="4.4161E-12"
+        ixz="-5.8256E-12"
+        iyy="0.00050563"
+        iyz="1.8909E-12"
+        izz="0.00094192" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://autonomous_jeep_steering/meshes/wheel_front_right_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://autonomous_jeep_steering/meshes/wheel_front_right_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_front_right_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.148199950400563 -0.06"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="steering_rod_link" />
+    <child
+      link="wheel_front_right_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="lidar_link">
+    <inertial>
+      <origin
+        xyz="-0.0056602 1.3942E-17 -0.014137"
+        rpy="0 0 0" />
+      <mass
+        value="0.07569" />
+      <inertia
+        ixx="2.4516E-05"
+        ixy="1.1835E-18"
+        ixz="-4.0042E-06"
+        iyy="3.8897E-05"
+        iyz="-2.6015E-20"
+        izz="4.8804E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://autonomous_jeep_steering/meshes/lidar_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://autonomous_jeep_steering/meshes/lidar_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lidar_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0387096605896324 0 0.246"
+      rpy="0 0 0" />
+    <parent
+      link="body_link" />
+    <child
+      link="lidar_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="camera_link">
+    <inertial>
+      <origin
+        xyz="-0.013289 -0.0015286 -0.00034738"
+        rpy="0 0 0" />
+      <mass
+        value="0.050614" />
+      <inertia
+        ixx="3.2307E-05"
+        ixy="-1.6999E-08"
+        ixz="-1.18E-07"
+        iyy="4.9925E-06"
+        iyz="-4.8942E-10"
+        izz="3.2267E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://autonomous_jeep_steering/meshes/camera_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://autonomous_jeep_steering/meshes/camera_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="camera_joint"
+    type="fixed">
+    <origin
+      xyz="0.265 0.00155480626291431 0.0550000564834226"
+      rpy="0 0 0" />
+    <parent
+      link="body_link" />
+    <child
+      link="camera_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+
+   <!-- camera -->
+  <gazebo reference="camera_link">
+    <sensor type="camera" name="camera_sensor">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>3000</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise is sampled independently per pixel on each frame.
+               That pixel's noise value is added to each of its color
+               channels, which at that point lie in the range [0,1]. -->
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>jeep/camera_sensor</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera_link</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+   <!-- laserscan -->
+  <gazebo reference="lidar_link">
+   <sensor name="laserscan" type="ray">
+   <!-- Sensor ray -->
+   
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>100</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>18000</samples>
+            <resolution>0.1</resolution>
+            <min_angle>-1.57</min_angle>
+            <max_angle>1.57</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.10</min>
+          <max>6</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise parameters based on published spec for Hokuyo laser
+               achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+               stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+               reading. -->
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="laserScanner" filename="libgazebo_ros_laser.so">
+        <topicName>/jeep/laser/scan</topicName>
+        <frameName>lidar_link</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- <gazebo reference="lidar_link">
+  <visual>
+    <plugin name="display_camera" filename="libgazebo_ros_video.so">
+      <topicName>/jeep/camera_sensor/image_raw</topicName>
+      <height>120</height>
+      <width>160</width>
+    </plugin>
+  </visual>
+</gazebo> -->
+
+
+
+
+<gazebo>
+  <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+  <updateRate>100</updateRate>
+
+  <leftJoint>wheel_front_left_joint</leftJoint>
+  <rightJoint>wheel_front_right_joint</rightJoint>
+  <wheelAcceleration>100</wheelAcceleration>
+  <commandTopic>telop_input_cmd</commandTopic>
+  <wheelTorque>10</wheelTorque>
+  <publishWheelJointState>true</publishWheelJointState>
+  <wheelDiameter>150</wheelDiameter>
+  <wheelSeparation>300</wheelSeparation>
+  
+  <legacyMode>false</legacyMode>
+  <odometryTopic>odom</odometryTopic>
+  <robotBaseFrame>base_footprint</robotBaseFrame>
+  <odometryFrame>odom</odometryFrame>
+  <odometrySource>1</odometrySource>
+  <publishWheelTF>true</publishWheelTF>
+  <publishOdom>true</publishOdom>
+  <publishWheelTF>na</publishWheelTF>
+  <rosDebugLevel>na</rosDebugLevel>
+
+  </plugin>
+</gazebo>
+
+<gazebo>
+  <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+  <updateRate>100</updateRate>
+
+  <leftJoint>wheel_back_left_joint</leftJoint>
+  <rightJoint>wheel_back_right_joint</rightJoint>
+  <wheelAcceleration>100</wheelAcceleration>
+  <commandTopic>telop_input_cmd</commandTopic>
+  <wheelTorque>10</wheelTorque>
+  <publishWheelJointState>true</publishWheelJointState>
+  <wheelDiameter>150</wheelDiameter>
+  <wheelSeparation>300</wheelSeparation>
+  
+  <legacyMode>false</legacyMode>
+  <odometryTopic>odom</odometryTopic>
+  <robotBaseFrame>base_footprint</robotBaseFrame>
+  <odometryFrame>odom</odometryFrame>
+  <odometrySource>1</odometrySource>
+  <publishWheelTF>true</publishWheelTF>
+  <publishOdom>true</publishOdom>
+  <publishWheelTF>na</publishWheelTF>
+  <rosDebugLevel>na</rosDebugLevel>
+  
+  
+  </plugin>
+</gazebo>
+
+
+
+
+  
+</robot>
